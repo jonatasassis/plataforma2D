@@ -5,7 +5,7 @@ using UnityEngine;
 public class Personagem : MonoBehaviour
 {
     public Rigidbody2D myRigidbody2D;
-    public Vector2 velocidade;
+    public int velocidade;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +17,11 @@ public class Personagem : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            myRigidbody2D.MovePosition(myRigidbody2D.position+velocidade*Time.deltaTime);
+            myRigidbody2D.velocity= new Vector2(velocidade,myRigidbody2D.velocity.y);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRigidbody2D.MovePosition(myRigidbody2D.position - velocidade * Time.deltaTime);
+            myRigidbody2D.velocity = new Vector2(-velocidade, myRigidbody2D.velocity.y);
         }
     }
 }
