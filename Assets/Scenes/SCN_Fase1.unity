@@ -874,8 +874,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   botao: {fileID: 428814119}
-  delay: 0
-  tamanhoAtual: 0
+  duracaoDoScale: 1
+  ease: 27
 --- !u!1 &608379696
 GameObject:
   m_ObjectHideFlags: 0
