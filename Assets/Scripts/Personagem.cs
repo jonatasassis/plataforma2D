@@ -5,7 +5,7 @@ using UnityEngine;
 public class Personagem : MonoBehaviour
 {
     public Rigidbody2D myRigidbody2D;
-    public int velocidade,forcaPulo,correcaoGravidade;
+    public int velocidadeCaminhada,velocidadeCorrida,velocidadeAtual,forcaPulo,correcaoGravidade;
     public Vector2 friccao = new Vector2(1f, 0);
     // Start is called before the first frame update
     void Start()
@@ -22,13 +22,22 @@ public class Personagem : MonoBehaviour
 
     private void Movimentacao()
     {
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            velocidadeAtual = velocidadeCorrida;
+        }
+        else
+        {
+            velocidadeAtual = velocidadeCaminhada;
+        }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            myRigidbody2D.velocity = new Vector2((velocidade*correcaoGravidade), myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2((velocidadeAtual*correcaoGravidade), myRigidbody2D.velocity.y);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            myRigidbody2D.velocity = new Vector2((-velocidade * correcaoGravidade), myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2((-velocidadeAtual * correcaoGravidade), myRigidbody2D.velocity.y);
         }
 
         if (myRigidbody2D.velocity.x > 0)
