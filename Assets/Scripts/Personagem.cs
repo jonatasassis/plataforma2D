@@ -65,7 +65,7 @@ public class Personagem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             myRigidbody2D.velocity = Vector2.up * forcaPulo;
-            myRigidbody2D.transform.localScale= Vector2.one;
+            myRigidbody2D.transform.localScale= new Vector2(0.8f,0.8f);
             DOTween.Kill(myRigidbody2D.transform);
             myRigidbody2D.transform.DOScaleY(stretchY,duracaoAnimacao).SetLoops(2,LoopType.Yoyo).SetEase(ease);
             myRigidbody2D.transform.DOScaleX(stretchX, duracaoAnimacao).SetLoops(2, LoopType.Yoyo).SetEase(ease);
