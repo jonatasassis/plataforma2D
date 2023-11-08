@@ -14,10 +14,12 @@ public class HP : MonoBehaviour
     public Vector3 posicaoRespawn;
     public CinemachineVirtualCamera virtualCam;
   
+  
 
     private void Awake()
     {
         vidaAtual = vidaInicial;
+        posicaoRespawn= playerAtual.transform.position;
 
         
     }
@@ -26,6 +28,7 @@ public class HP : MonoBehaviour
     {
         virtualCam.LookAt = playerAtual.transform;
         virtualCam.Follow = playerAtual.transform;
+        
     }
     public void Dano(int dano)
     {
@@ -48,11 +51,14 @@ public class HP : MonoBehaviour
        
         if (destruirObjeto)
         {
+           
             Destroy(gameObject,delayDestruirObjeto);
+           
         }
 
-            Instantiate(novoPlayer, posicaoRespawn, Quaternion.identity);
+            Instantiate(novoPlayer, posicaoRespawn, Quaternion.Euler(0,0,0));
             playerAtual = novoPlayer;
+        
             
     }
 
