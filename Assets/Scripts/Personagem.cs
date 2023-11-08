@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Personagem : MonoBehaviour
 {
+
+    [Header("movimentacao")]
     public Rigidbody2D myRigidbody2D;
     public int velocidadeCaminhada,velocidadeCorrida,velocidadeAtual,forcaPulo;
     public Vector2 friccao = new Vector2(1f, 0);
+
+    [Header("animacao")]
+    public float stretchY = 1.5f;
+    public float stretchX = 0.7f;
+    public float duracaoAnimacao = 0.001f;
+    public Ease ease = Ease.OutBack;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +25,9 @@ public class Personagem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movimentacao();
         Pulo();
+        Movimentacao();
+       
     }
 
     private void Movimentacao()
@@ -55,7 +65,12 @@ public class Personagem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             myRigidbody2D.velocity = Vector2.up * forcaPulo;
+            myRigidbody2D.transform.localScale= Vector2.one;
+            DOTween.Kill(myRigidbody2D.transform);
+            myRigidbody2D.transform.DOScaleY(stretchY,duracaoAnimacao).SetLoops(2,LoopType.Yoyo).SetEase(ease);
+            myRigidbody2D.transform.DOScaleX(stretchX, duracaoAnimacao).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         }
-        
     }
+        
+    
 }
