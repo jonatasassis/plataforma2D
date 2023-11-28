@@ -4880,6 +4880,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1899756460}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1285926816 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3562818169227747833, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
+  m_PrefabInstance: {fileID: 1375727434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289791495
 GameObject:
   m_ObjectHideFlags: 3
@@ -6928,7 +6933,7 @@ GameObject:
   - component: {fileID: 1802804193}
   m_Layer: 0
   m_Name: 'Inimigo '
-  m_TagString: Untagged
+  m_TagString: Inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6951,6 +6956,7 @@ MonoBehaviour:
   x: 6
   y: 3
   cooldownProjectil: 0
+  vidaInicialInimigo: 5
   personagem: {fileID: 651455006228313621}
   projectilInimigo: {fileID: 2374955845779000373, guid: cf93a52bb1a3a9547bb45c196d5886c2, type: 3}
   inimigo: {fileID: 1802804187}
@@ -6959,7 +6965,9 @@ MonoBehaviour:
   olhosInimigo:
   - {fileID: 1632031666}
   - {fileID: 1959112071}
+  corpoInimigo: {fileID: 1285926816}
   corFlashOlhosInimigos: {r: 1, g: 0, b: 0, a: 1}
+  corFlashCorpoInimigo: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &1802804189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8723,6 +8731,9 @@ MonoBehaviour:
   corFlash: {r: 0, g: 0, b: 0, a: 0}
   duracaoFlash: 0.05
   virtualCam: {fileID: 287173040}
+  projectilPlayer: {fileID: 2550855587122282714, guid: 5c202be4930d58c43846d2449f9a6d2c, type: 3}
+  posInicialProjectilPlayer: {x: -1, y: 0.5}
+  refDirecao: {fileID: 1956132161977215032, guid: 5c202be4930d58c43846d2449f9a6d2c, type: 3}
 --- !u!4 &7257757848014864539
 Transform:
   m_ObjectHideFlags: 0
@@ -8972,6 +8983,14 @@ PrefabInstance:
     - target: {fileID: 5206922444477780996, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
       propertyPath: spritePlayer.Array.size
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206922444477780996, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
+      propertyPath: posInicialProjectilPlayer.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206922444477780996, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
+      propertyPath: posInicialProjectilPlayer.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5341482322194929643, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
       propertyPath: m_SortingLayer

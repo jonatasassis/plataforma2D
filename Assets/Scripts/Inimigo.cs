@@ -5,26 +5,44 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public int danoInimigo=10,distanciaXPlayerInimigo,areaAtaqueInimigo,x,y,cooldownProjectil;
+    public int danoInimigo=10,distanciaXPlayerInimigo,areaAtaqueInimigo,x,y, cooldownProjectil,vidaInicialInimigo;
     public Personagem personagem;
     public GameObject projectilInimigo,inimigo, bocaAberta;
     public Vector2 posInicialProjectilInimigo;
     public SpriteRenderer[] olhosInimigo;
-    public Color corFlashOlhosInimigos;
+    public SpriteRenderer corpoInimigo;
+    public Color corFlashOlhosInimigos,corFlashCorpoInimigo;
+    public static int vidaAtualInimigo;
      
 
     private void Awake()
     {
         bocaAberta.SetActive(false);
+        vidaAtualInimigo = vidaInicialInimigo;
     }
     private void Update()
     {
-        if(cooldownProjectil>0)
+        InimigoAtacar();
+        InimigoReceberDano();
+
+    }
+    
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == "Player")
+            {
+                Personagem.vidaAtual = 0;
+               
+            }
+        }
+    public void InimigoAtacar()
+    {
+        if (cooldownProjectil > 0)
         {
             cooldownProjectil--;
 
         }
-       distanciaXPlayerInimigo= (int)inimigo.transform.position.x-(int)personagem.transform.position.x;
+        distanciaXPlayerInimigo = (int)inimigo.transform.position.x - (int)personagem.transform.position.x;
         if (distanciaXPlayerInimigo < areaAtaqueInimigo && cooldownProjectil == 0)
         {
             bocaAberta.SetActive(true);
@@ -33,7 +51,7 @@ public class Inimigo : MonoBehaviour
 
             for (int s = 0; s < olhosInimigo.Length; s++)
             {
-                olhosInimigo[s].color=corFlashOlhosInimigos;
+                olhosInimigo[s].color = corFlashOlhosInimigos;
             }
         }
         else if (distanciaXPlayerInimigo > areaAtaqueInimigo)
@@ -45,14 +63,30 @@ public class Inimigo : MonoBehaviour
             }
         }
     }
-    
-        private void OnTriggerEnter2D(Collider2D collision)
+
+    public void InimigoReceberDano()
+    {
+        //inimigo morreu
+        if (vidaAtualInimigo <= 0)
         {
-            if (collision.tag == "Player")
-            {
-                Personagem.vidaAtual = 0;
-               
-            }
+            Destroy(inimigo);
+
+
+
         }
+
+        //inimigo sofreu dano, mas nao morreu
+
+        else if (Projectil.atingiInimigo == true)
+        {
+           
+          corpoInimigo.DOColor(corFlashCorpoInimigo, 0.2f).SetLoops(2, LoopType.Yoyo);
+            
+            Projectil.atingiInimigo = false;
+            
+        }
+
+    }
+
     
 }

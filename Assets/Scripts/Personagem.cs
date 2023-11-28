@@ -33,13 +33,19 @@ public class Personagem : MonoBehaviour
 
     [Header("camera")]
     public CinemachineVirtualCamera virtualCam;
+    
 
+    [Header("projectil player")]
+    public GameObject projectilPlayer;
+    public Vector2 posInicialProjectilPlayer;
+    public Projectil refDirecao;
 
     // Start is called before the first frame update
     void Start()
     {
       posicaoRespawnPlayer= player.transform.position;
         vidaAtual = vidaInicial;
+        refDirecao.flipDirecaoProjectil = true;
 
     }
 
@@ -49,6 +55,7 @@ public class Personagem : MonoBehaviour
         Pulo();
         Movimentacao();
         ReceberDano();
+        PlayerAtirar();
        
         virtualCam.LookAt = player.transform;
         virtualCam.Follow = player.transform;
@@ -70,6 +77,7 @@ public class Personagem : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            refDirecao.flipDirecaoProjectil = true;
             myRigidbody2D.velocity = new Vector2(velocidadeAtual, myRigidbody2D.velocity.y);
             animator.Play("ANIM_Astronaut_Run");
             
@@ -78,6 +86,7 @@ public class Personagem : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
+            refDirecao.flipDirecaoProjectil = false;
             myRigidbody2D.velocity = new Vector2(-velocidadeAtual, myRigidbody2D.velocity.y);
             animator.Play("ANIM_Astronaut_Run");
             
@@ -141,8 +150,6 @@ public class Personagem : MonoBehaviour
 
     }
 
-
-   
     private void Pulo()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -159,6 +166,21 @@ public class Personagem : MonoBehaviour
 
         
     }
+
+    private void PlayerAtirar()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (refDirecao.flipDirecaoProjectil)
+            {
+                Instantiate(projectilPlayer, new Vector2(player.transform.position.x - posInicialProjectilPlayer.x, player.transform.position.y + posInicialProjectilPlayer.y), Quaternion.Euler(0,0,-223));
+            }
+            else
+            {
+                Instantiate(projectilPlayer, new Vector2(player.transform.position.x + posInicialProjectilPlayer.x, player.transform.position.y + posInicialProjectilPlayer.y), Quaternion.Euler(0, 0, -45));
+            }
+        }
         
     
+}
 }

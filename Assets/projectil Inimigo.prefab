@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5013647944773617212}
   - component: {fileID: 6903614689767691443}
   m_Layer: 0
-  m_Name: projectil
+  m_Name: projectil Inimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,29 +122,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilRigidbody2D: {fileID: 4330262390945618337}
   danoProjectil: 1
-  velocidadeProjectil: 1
+  velocidadeProjectil: 5
   duracaoProjectil: 30
-  alvo: Player
   direcao: {x: 1, y: 0}
   posicaoInicialProjectil: {x: 0, y: 0}
   projectil: {fileID: 2374955845779000373}
-  spritePlayer:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  corFlash: {r: 1, g: 0, b: 0, a: 0.6392157}
-  duracaoFlash: 0.2
+  flipDirecaoProjectil: 0
+  projectilInimigo: 1
+  projectilPlayer: 0
 --- !u!210 &6903614689767691443
 SortingGroup:
   m_ObjectHideFlags: 0
