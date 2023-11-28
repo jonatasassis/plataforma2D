@@ -30,6 +30,7 @@ public class Personagem : MonoBehaviour
     public SpriteRenderer[] spritePlayer;
     public Color corFlash;
     public float duracaoFlash = 0.2f;
+    public static bool morri = false;
 
     [Header("camera")]
     public CinemachineVirtualCamera virtualCam;
@@ -65,7 +66,7 @@ public class Personagem : MonoBehaviour
     private void Movimentacao()
     {
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && morri != true)
         {
             velocidadeAtual = velocidadeCorrida;
             animator.Play("ANIM_Astronaut_Run");
@@ -75,7 +76,7 @@ public class Personagem : MonoBehaviour
         {
             velocidadeAtual = velocidadeCaminhada;
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && morri != true)
         {
             refDirecao.flipDirecaoProjectil = true;
             myRigidbody2D.velocity = new Vector2(velocidadeAtual, myRigidbody2D.velocity.y);
@@ -84,7 +85,7 @@ public class Personagem : MonoBehaviour
             
 
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && morri != true)
         {
             refDirecao.flipDirecaoProjectil = false;
             myRigidbody2D.velocity = new Vector2(-velocidadeAtual, myRigidbody2D.velocity.y);
@@ -104,13 +105,13 @@ public class Personagem : MonoBehaviour
             myRigidbody2D.velocity += friccao;
             spritePersonagem.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        if (myRigidbody2D.velocity.x == 0 )
+        if (myRigidbody2D.velocity.x == 0 && morri!=true )
         {
             
             animator.Play("ANIM_Astronaut_Idle");
             
         }
-        if (myRigidbody2D.velocity.y >0 )
+        if (myRigidbody2D.velocity.y >0 && morri != true)
         {
 
             animator.Play("ANIM_Astronaut_Jump_Up");
@@ -125,7 +126,9 @@ public class Personagem : MonoBehaviour
         // player morreu
         if (vidaAtual <= 0)
         {
-            player.transform.position = posicaoRespawnPlayer;
+            morri = true;
+            animator.Play("ANIM_Astronaut_Death");
+            //
             vidaAtual = vidaInicial;
 
             for (int s = 0; s < spritePlayer.Length; s++)
@@ -133,7 +136,7 @@ public class Personagem : MonoBehaviour
                 spritePlayer[s].color = Color.white;
             }
 
-            
+           StartCoroutine(DelayRespawn());
 
         }
 
@@ -146,7 +149,7 @@ public class Personagem : MonoBehaviour
             }
             Projectil.atingiPlayer= false;
         }
-
+       
 
     }
 
@@ -183,4 +186,11 @@ public class Personagem : MonoBehaviour
         
     
 }
+
+    IEnumerator DelayRespawn()
+    {
+        yield return new WaitForSeconds(2f);
+        morri = false;
+        player.transform.position = posicaoRespawnPlayer;
+    }
 }

@@ -7,17 +7,19 @@ public class Inimigo : MonoBehaviour
 {
     public int danoInimigo=10,distanciaXPlayerInimigo,areaAtaqueInimigo,x,y, cooldownProjectil,vidaInicialInimigo;
     public Personagem personagem;
-    public GameObject projectilInimigo,inimigo, bocaAberta;
+    public GameObject projectilInimigo,inimigo;
     public Vector2 posInicialProjectilInimigo;
     public SpriteRenderer[] olhosInimigo;
     public SpriteRenderer corpoInimigo;
     public Color corFlashOlhosInimigos,corFlashCorpoInimigo;
     public static int vidaAtualInimigo;
+    public Animator animator;
+    public bool inimigoMorto=false;
      
 
     private void Awake()
     {
-        bocaAberta.SetActive(false);
+        
         vidaAtualInimigo = vidaInicialInimigo;
     }
     private void Update()
@@ -37,29 +39,32 @@ public class Inimigo : MonoBehaviour
         }
     public void InimigoAtacar()
     {
-        if (cooldownProjectil > 0)
+        if (inimigoMorto != true)
         {
-            cooldownProjectil--;
-
-        }
-        distanciaXPlayerInimigo = (int)inimigo.transform.position.x - (int)personagem.transform.position.x;
-        if (distanciaXPlayerInimigo < areaAtaqueInimigo && cooldownProjectil == 0)
-        {
-            bocaAberta.SetActive(true);
-            Instantiate(projectilInimigo, posInicialProjectilInimigo, Quaternion.identity);
-            cooldownProjectil = 20;
-
-            for (int s = 0; s < olhosInimigo.Length; s++)
+            if (cooldownProjectil > 0)
             {
-                olhosInimigo[s].color = corFlashOlhosInimigos;
+                cooldownProjectil--;
+
             }
-        }
-        else if (distanciaXPlayerInimigo > areaAtaqueInimigo)
-        {
-            bocaAberta.SetActive(false);
-            for (int s = 0; s < olhosInimigo.Length; s++)
+            distanciaXPlayerInimigo = (int)inimigo.transform.position.x - (int)personagem.transform.position.x;
+            if (distanciaXPlayerInimigo < areaAtaqueInimigo && cooldownProjectil == 0 && Personagem.morri == false)
             {
-                olhosInimigo[s].color = Color.white;
+                animator.Play("ANIM_Enemy_2_Attack");
+                Instantiate(projectilInimigo, posInicialProjectilInimigo, Quaternion.identity);
+                cooldownProjectil = 20;
+
+                for (int s = 0; s < olhosInimigo.Length; s++)
+                {
+                    olhosInimigo[s].color = corFlashOlhosInimigos;
+                }
+            }
+            else if (distanciaXPlayerInimigo > areaAtaqueInimigo)
+            {
+                animator.Play("ANIM_Enemy_2_Idle");
+                for (int s = 0; s < olhosInimigo.Length; s++)
+                {
+                    olhosInimigo[s].color = Color.white;
+                }
             }
         }
     }
@@ -69,9 +74,10 @@ public class Inimigo : MonoBehaviour
         //inimigo morreu
         if (vidaAtualInimigo <= 0)
         {
-            Destroy(inimigo);
-
-
+            inimigoMorto = true;
+            corpoInimigo.color = Color.magenta;
+            animator.Play("ANIM_Enemy_2_Death");
+            StartCoroutine(DelayDeath());
 
         }
 
@@ -87,6 +93,11 @@ public class Inimigo : MonoBehaviour
         }
 
     }
+    IEnumerator DelayDeath()
+    {
+        yield return new WaitForSeconds(2f);
 
-    
+        Destroy(inimigo);
+    }
+
 }

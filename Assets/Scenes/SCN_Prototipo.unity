@@ -5088,11 +5088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5560,6 +5560,11 @@ Transform:
 --- !u!4 &1464868594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2944973745361044811, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
+  m_PrefabInstance: {fileID: 1375727434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1464868595 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3122169294817524646, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
   m_PrefabInstance: {fileID: 1375727434}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1489594264
@@ -6864,11 +6869,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1965561701}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1778643022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8030980026787630384, guid: e0d57717ad485d748986ddb9eba2beb8, type: 3}
-  m_PrefabInstance: {fileID: 1375727434}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1782412011
 GameObject:
   m_ObjectHideFlags: 1
@@ -6960,7 +6960,6 @@ MonoBehaviour:
   personagem: {fileID: 651455006228313621}
   projectilInimigo: {fileID: 2374955845779000373, guid: cf93a52bb1a3a9547bb45c196d5886c2, type: 3}
   inimigo: {fileID: 1802804187}
-  bocaAberta: {fileID: 1778643022}
   posInicialProjectilInimigo: {x: 0, y: 0.8}
   olhosInimigo:
   - {fileID: 1632031666}
@@ -6968,6 +6967,8 @@ MonoBehaviour:
   corpoInimigo: {fileID: 1285926816}
   corFlashOlhosInimigos: {r: 1, g: 0, b: 0, a: 1}
   corFlashCorpoInimigo: {r: 1, g: 0, b: 0, a: 1}
+  animator: {fileID: 1464868595}
+  inimigoMorto: 0
 --- !u!61 &1802804189
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7050,7 +7051,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.026, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1464868594}
@@ -8712,7 +8713,7 @@ MonoBehaviour:
   pulando: 0
   player: {fileID: 1898923841}
   posicaoRespawnPlayer: {x: 0, y: 0, z: 0}
-  vidaInicial: 10
+  vidaInicial: 2
   spritePlayer:
   - {fileID: 901924134}
   - {fileID: 953442174}
@@ -8974,7 +8975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5206922444477780996, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
       propertyPath: vidaInicial
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5206922444477780996, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
       propertyPath: duracaoFlash
