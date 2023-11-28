@@ -1,19 +1,28 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Projectil : MonoBehaviour
 {
-    public HP personagem;
+  
     public Rigidbody2D projectilRigidbody2D;
     public int danoProjectil,velocidadeProjectil,duracaoProjectil;
     public string alvo;
-    public Vector2 direcao;
+    public Vector2 direcao,posicaoInicialProjectil;
     public GameObject projectil;
+    public SpriteRenderer []spritePlayer;
+    
+    public static bool atingiPlayer=false;
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        duracaoProjectil = 90;
+       
+        duracaoProjectil = 30;
+        
     }
 
     // Update is called once per frame
@@ -26,20 +35,22 @@ public class Projectil : MonoBehaviour
             duracaoProjectil--;
         }
 
-        else if (duracaoProjectil <= 0)
+        /*else if (duracaoProjectil <= 0)
         {
             Destroy(projectil);
             
-        }
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == alvo)
         {
-            personagem.Dano(danoProjectil);
+            atingiPlayer = true;
+            Personagem.vidaAtual=Personagem.vidaAtual-danoProjectil;
             Destroy(projectil);
-            print("player atingido");
+            print("player atingido. vida atual: "+Personagem.vidaAtual);
+            
         }
     }
 }

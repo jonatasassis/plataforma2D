@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Personagem : MonoBehaviour
 {
@@ -20,12 +21,26 @@ public class Personagem : MonoBehaviour
     public Animator animator;
     public GameObject spritePersonagem;
     public bool andando, pulando;
-  
-    
+
+    [Header("player")]
+    public GameObject player;
+    public Vector3 posicaoRespawnPlayer;
+    public int vidaInicial;
+    public static int vidaAtual;
+    public SpriteRenderer[] spritePlayer;
+    public Color corFlash;
+    public float duracaoFlash = 0.2f;
+
+    [Header("camera")]
+    public CinemachineVirtualCamera virtualCam;
+
+
     // Start is called before the first frame update
     void Start()
     {
-       
+      posicaoRespawnPlayer= player.transform.position;
+        vidaAtual = vidaInicial;
+
     }
 
     // Update is called once per frame
@@ -33,7 +48,11 @@ public class Personagem : MonoBehaviour
     {
         Pulo();
         Movimentacao();
+        ReceberDano();
        
+        virtualCam.LookAt = player.transform;
+        virtualCam.Follow = player.transform;
+
     }
 
     private void Movimentacao()
@@ -92,6 +111,38 @@ public class Personagem : MonoBehaviour
         
     }
 
+    public void ReceberDano()
+    {
+        // player morreu
+        if (vidaAtual <= 0)
+        {
+            player.transform.position = posicaoRespawnPlayer;
+            vidaAtual = vidaInicial;
+
+            for (int s = 0; s < spritePlayer.Length; s++)
+            {
+                spritePlayer[s].color = Color.white;
+            }
+
+            
+
+        }
+
+        //player sofreu dano, mas nao morreu
+        else if (Projectil.atingiPlayer==true)
+        {
+            for (int s = 0; s < spritePlayer.Length; s++)
+            {
+                spritePlayer[s].DOColor(corFlash, duracaoFlash).SetLoops(2, LoopType.Yoyo);
+            }
+            Projectil.atingiPlayer= false;
+        }
+
+
+    }
+
+
+   
     private void Pulo()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
