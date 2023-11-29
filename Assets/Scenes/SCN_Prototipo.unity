@@ -8750,6 +8750,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8762142313082682818, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762142313082682818, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762142313082682818, guid: bc3fa7a8d5ec05840a3e0d118d1d9376, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
