@@ -1704,7 +1704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415671341}
-  - component: {fileID: 415671340}
+  - component: {fileID: 415671342}
   m_Layer: 0
   m_Name: Logica
   m_TagString: Untagged
@@ -1712,19 +1712,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &415671340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 415671339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14830979558df5342b177cb6a144d374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qtdMoedasText: {fileID: 1001628936}
 --- !u!4 &415671341
 Transform:
   m_ObjectHideFlags: 0
@@ -1740,6 +1727,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415671342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415671339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14830979558df5342b177cb6a144d374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qtdMoedas: {fileID: 11400000, guid: a01786bfa4a110442a70661633a98155, type: 2}
+  qtdMoedasText: {fileID: 1001628936}
 --- !u!1 &435507392
 GameObject:
   m_ObjectHideFlags: 0
@@ -8448,9 +8449,9 @@ MonoBehaviour:
   velocidadeAtual: 0
   forcaPulo: 15
   friccao: {x: 0, y: 0}
-  stretchY: 0.35
-  stretchX: 0.25
-  duracaoAnimacao: 0.3
+  stretchY: {fileID: 11400000, guid: efb8c277c42ed2946af9880a4ceaad14, type: 2}
+  stretchX: {fileID: 11400000, guid: 70e4d2ddddd7e564cb7b90b931850093, type: 2}
+  duracaoAnimacao: {fileID: 11400000, guid: e60e6f41515ed3145b0b5cf6fd326a40, type: 2}
   ease: 27
   animator: {fileID: 7663017677459196355}
   spritePersonagem: {fileID: 1898923841}

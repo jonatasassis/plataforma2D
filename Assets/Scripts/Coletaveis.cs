@@ -5,12 +5,12 @@ using TMPro;
 
 public class Coletaveis : MonoBehaviour
 {
-
+    public static bool coletei=false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            UI.qtdMoedas++;
+            coletei = true;
             Destroy(gameObject);
         }
     }

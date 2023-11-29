@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f368c021d0f20214ca7604fdaea174ae, type: 3}
-  m_Name: SOIntMoedas
+  m_Script: {fileID: 11500000, guid: 36680bd908eaa1d4680a8eec86be0502, type: 3}
+  m_Name: SOFloatStretchX
   m_EditorClassIdentifier: 
-  valorInt: 43
+  valorFloat: 0

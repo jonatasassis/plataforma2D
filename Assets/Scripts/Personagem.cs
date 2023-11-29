@@ -14,9 +14,9 @@ public class Personagem : MonoBehaviour
     public Vector2 friccao = new Vector2(1f, 0);
 
     [Header("animacao")]
-    public float stretchY = 1.5f;
-    public float stretchX = 0.7f;
-    public float duracaoAnimacao = 0.001f;
+    public SOFloat stretchY;
+    public SOFloat stretchX;
+    public SOFloat duracaoAnimacao;
     public Ease ease = Ease.OutBack;
     public Animator animator;
     public GameObject spritePersonagem;
@@ -44,6 +44,10 @@ public class Personagem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        duracaoAnimacao.valorFloat = 0.001f;
+        stretchX.valorFloat = 0.7f;
+        stretchY.valorFloat= 1.5f;
+
       posicaoRespawnPlayer= player.transform.position;
         vidaAtual = vidaInicial;
         refDirecao.flipDirecaoProjectil = true;
@@ -163,8 +167,8 @@ public class Personagem : MonoBehaviour
             myRigidbody2D.transform.localScale= new Vector2(0.3f,0.3f);
            
             DOTween.Kill(myRigidbody2D.transform);
-            myRigidbody2D.transform.DOScaleY(stretchY,duracaoAnimacao).SetLoops(2,LoopType.Yoyo).SetEase(ease);
-            myRigidbody2D.transform.DOScaleX(stretchX, duracaoAnimacao).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+            myRigidbody2D.transform.DOScaleY(stretchY.valorFloat,duracaoAnimacao.valorFloat).SetLoops(2,LoopType.Yoyo).SetEase(ease);
+            myRigidbody2D.transform.DOScaleX(stretchX.valorFloat, duracaoAnimacao.valorFloat).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         }
 
         
