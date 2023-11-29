@@ -7,18 +7,11 @@ using Cinemachine;
 
 public class Personagem : MonoBehaviour
 {
+    [Header("setup")]
+    public SOPlayer soplayer;
 
     [Header("movimentacao")]
     public Rigidbody2D myRigidbody2D;
-    public int velocidadeCaminhada,velocidadeCorrida,velocidadeAtual,forcaPulo;
-    public Vector2 friccao = new Vector2(1f, 0);
-
-    [Header("animacao")]
-    public SOFloat stretchY;
-    public SOFloat stretchX;
-    public SOFloat duracaoAnimacao;
-    public Ease ease = Ease.OutBack;
-    public Animator animator;
     public GameObject spritePersonagem;
     public bool andando, pulando;
 
@@ -32,6 +25,8 @@ public class Personagem : MonoBehaviour
     public float duracaoFlash = 0.2f;
     public static bool morri = false;
 
+    public Animator animator;
+
     [Header("camera")]
     public CinemachineVirtualCamera virtualCam;
     
@@ -44,9 +39,9 @@ public class Personagem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        duracaoAnimacao.valorFloat = 0.001f;
-        stretchX.valorFloat = 0.7f;
-        stretchY.valorFloat= 1.5f;
+        soplayer.duracaoAnimacao = 0.001f;
+        soplayer.stretchX = 0.7f;
+        soplayer.stretchY= 1.5f;
 
       posicaoRespawnPlayer= player.transform.position;
         vidaAtual = vidaInicial;
@@ -72,18 +67,18 @@ public class Personagem : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && morri != true)
         {
-            velocidadeAtual = velocidadeCorrida;
+            soplayer.velocidadeAtual = soplayer.velocidadeCorrida;
             animator.Play("ANIM_Astronaut_Run");
             
         }
         else
         {
-            velocidadeAtual = velocidadeCaminhada;
+            soplayer.velocidadeAtual = soplayer.velocidadeCaminhada;
         }
         if (Input.GetKey(KeyCode.RightArrow) && morri != true)
         {
             refDirecao.flipDirecaoProjectil = true;
-            myRigidbody2D.velocity = new Vector2(velocidadeAtual, myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(soplayer.velocidadeAtual, myRigidbody2D.velocity.y);
             animator.Play("ANIM_Astronaut_Run");
             
             
@@ -92,7 +87,7 @@ public class Personagem : MonoBehaviour
         else if (Input.GetKey(KeyCode.LeftArrow) && morri != true)
         {
             refDirecao.flipDirecaoProjectil = false;
-            myRigidbody2D.velocity = new Vector2(-velocidadeAtual, myRigidbody2D.velocity.y);
+            myRigidbody2D.velocity = new Vector2(-soplayer.velocidadeAtual, myRigidbody2D.velocity.y);
             animator.Play("ANIM_Astronaut_Run");
             
             
@@ -101,12 +96,12 @@ public class Personagem : MonoBehaviour
 
         if (myRigidbody2D.velocity.x > 0)
         {
-            myRigidbody2D.velocity -= friccao;
+            myRigidbody2D.velocity -= soplayer.friccao;
             spritePersonagem.transform.rotation = Quaternion.identity;
         }
         if (myRigidbody2D.velocity.x < 0)
         {
-            myRigidbody2D.velocity += friccao;
+            myRigidbody2D.velocity += soplayer.friccao;
             spritePersonagem.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         if (myRigidbody2D.velocity.x == 0 && morri!=true )
@@ -162,13 +157,13 @@ public class Personagem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             pulando = true;
-            myRigidbody2D.velocity = Vector2.up * forcaPulo;
+            myRigidbody2D.velocity = Vector2.up * soplayer.forcaPulo;
             
             myRigidbody2D.transform.localScale= new Vector2(0.3f,0.3f);
            
             DOTween.Kill(myRigidbody2D.transform);
-            myRigidbody2D.transform.DOScaleY(stretchY.valorFloat,duracaoAnimacao.valorFloat).SetLoops(2,LoopType.Yoyo).SetEase(ease);
-            myRigidbody2D.transform.DOScaleX(stretchX.valorFloat, duracaoAnimacao.valorFloat).SetLoops(2, LoopType.Yoyo).SetEase(ease);
+            myRigidbody2D.transform.DOScaleY(soplayer.stretchY, soplayer.duracaoAnimacao).SetLoops(2,LoopType.Yoyo).SetEase(soplayer.ease);
+            myRigidbody2D.transform.DOScaleX(soplayer.stretchX, soplayer.duracaoAnimacao).SetLoops(2, LoopType.Yoyo).SetEase(soplayer.ease);
         }
 
         
