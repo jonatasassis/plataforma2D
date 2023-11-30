@@ -17,14 +17,9 @@ public class Personagem : MonoBehaviour
 
     [Header("player")]
     public GameObject player;
-    public Vector3 posicaoRespawnPlayer;
-    public int vidaInicial;
     public static int vidaAtual;
     public SpriteRenderer[] spritePlayer;
-    public Color corFlash;
-    public float duracaoFlash = 0.2f;
     public static bool morri = false;
-
     public Animator animator;
 
     [Header("camera")]
@@ -44,8 +39,8 @@ public class Personagem : MonoBehaviour
         soplayer.stretchY= 1.5f;
         morri = false;
 
-      posicaoRespawnPlayer= player.transform.position;
-        vidaAtual = vidaInicial;
+        soplayer.posicaoRespawnPlayer= player.transform.position;
+        vidaAtual = soplayer.vidaInicial;
         refDirecao.flipDirecaoProjectil = true;
 
     }
@@ -129,7 +124,7 @@ public class Personagem : MonoBehaviour
             morri = true;
             animator.Play("ANIM_Astronaut_Death");
             //
-            vidaAtual = vidaInicial;
+            vidaAtual = soplayer.vidaInicial;
 
             for (int s = 0; s < spritePlayer.Length; s++)
             {
@@ -145,7 +140,7 @@ public class Personagem : MonoBehaviour
         {
             for (int s = 0; s < spritePlayer.Length; s++)
             {
-                spritePlayer[s].DOColor(corFlash, duracaoFlash).SetLoops(2, LoopType.Yoyo);
+                spritePlayer[s].DOColor(soplayer.corFlash, soplayer.duracaoFlash).SetLoops(2, LoopType.Yoyo);
             }
             Projectil.atingiPlayer= false;
         }
@@ -191,6 +186,6 @@ public class Personagem : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         morri = false;
-        player.transform.position = posicaoRespawnPlayer;
+        player.transform.position = soplayer.posicaoRespawnPlayer;
     }
 }

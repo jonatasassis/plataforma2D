@@ -5,24 +5,31 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    public   SOInt qtdMoedas;
-    public TextMeshProUGUI qtdMoedasText;
+    public   SOInt qtdMoedasRoxas,qtdMoedasVerde;
+    public TextMeshProUGUI qtdMoedasRoxasText,qtdMoedasVerdeText;
     // Start is called before the first frame update
     void Start()
     {
         
-        qtdMoedas.valorInt = 0;
+        qtdMoedasRoxas.valorInt = 0;
+        qtdMoedasVerde.valorInt = 0;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Coletaveis.coletei)
+        if (Coletaveis.coleteiMoedaRoxa)
         {
-            qtdMoedas.valorInt++;
-            Coletaveis.coletei = false;
+            qtdMoedasRoxas.valorInt++;
+            Coletaveis.coleteiMoedaRoxa = false;
         }
-        qtdMoedasText.text = "" + qtdMoedas.valorInt;
+        else if (Coletaveis.coleteiMoedaVerde)
+        {
+            qtdMoedasVerde.valorInt++;
+            Coletaveis.coleteiMoedaVerde = false;
+        }
+        qtdMoedasVerdeText.text = "" + qtdMoedasVerde.valorInt;
+        qtdMoedasRoxasText.text = "" + qtdMoedasRoxas.valorInt;
     }
 }
