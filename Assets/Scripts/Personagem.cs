@@ -42,6 +42,7 @@ public class Personagem : MonoBehaviour
         soplayer.duracaoAnimacao = 0.001f;
         soplayer.stretchX = 0.7f;
         soplayer.stretchY= 1.5f;
+        morri = false;
 
       posicaoRespawnPlayer= player.transform.position;
         vidaAtual = vidaInicial;
@@ -94,12 +95,12 @@ public class Personagem : MonoBehaviour
 
         }
 
-        if (myRigidbody2D.velocity.x > 0)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             myRigidbody2D.velocity -= soplayer.friccao;
-            spritePersonagem.transform.rotation = Quaternion.identity;
+            spritePersonagem.transform.rotation = Quaternion.Euler(0,0,0);
         }
-        if (myRigidbody2D.velocity.x < 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             myRigidbody2D.velocity += soplayer.friccao;
             spritePersonagem.transform.rotation = Quaternion.Euler(0, 180, 0);

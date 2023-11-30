@@ -8443,17 +8443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157509eff64b90643aa3a7b45538fcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soplayer: {fileID: 11400000, guid: 97053b42113f6514ebf1331d6212e859, type: 2}
   myRigidbody2D: {fileID: 7663017677459196356}
-  velocidadeCaminhada: 5
-  velocidadeCorrida: 10
-  velocidadeAtual: 0
-  forcaPulo: 15
-  friccao: {x: 0, y: 0}
-  stretchY: {fileID: 11400000, guid: efb8c277c42ed2946af9880a4ceaad14, type: 2}
-  stretchX: {fileID: 11400000, guid: 70e4d2ddddd7e564cb7b90b931850093, type: 2}
-  duracaoAnimacao: {fileID: 11400000, guid: e60e6f41515ed3145b0b5cf6fd326a40, type: 2}
-  ease: 27
-  animator: {fileID: 7663017677459196355}
   spritePersonagem: {fileID: 1898923841}
   andando: 0
   pulando: 0
@@ -8477,6 +8468,7 @@ MonoBehaviour:
   - {fileID: 590745563}
   corFlash: {r: 0, g: 0, b: 0, a: 0}
   duracaoFlash: 0.05
+  animator: {fileID: 7663017677459196355}
   virtualCam: {fileID: 287173040}
   projectilPlayer: {fileID: 2550855587122282714, guid: 5c202be4930d58c43846d2449f9a6d2c, type: 3}
   posInicialProjectilPlayer: {x: -1, y: 0.5}

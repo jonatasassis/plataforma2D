@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d06dbae2f9fa444bbf3c6c74c05e4b8, type: 3}
   m_Name: SOPlayer
   m_EditorClassIdentifier: 
-  velocidadeCaminhada: 0
-  velocidadeCorrida: 0
-  velocidadeAtual: 0
-  forcaPulo: 0
+  velocidadeCaminhada: 10
+  velocidadeCorrida: 15
+  velocidadeAtual: 10
+  forcaPulo: 20
   friccao: {x: 1, y: 0}
-  stretchY: {fileID: 0}
-  stretchX: {fileID: 0}
-  duracaoAnimacao: {fileID: 0}
+  stretchY: 1.5
+  stretchX: 0.7
+  duracaoAnimacao: 0.001
   ease: 27
