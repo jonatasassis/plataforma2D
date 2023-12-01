@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inimigo
+  - areaAtaqueInimigo
+  - chao
   layers:
   - Default
   - TransparentFX

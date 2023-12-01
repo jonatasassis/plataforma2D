@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Inimigo : MonoBehaviour
 {
-    public int danoInimigo=10,distanciaXPlayerInimigo,areaAtaqueInimigo,x,y, cooldownProjectil,vidaInicialInimigo;
+    public int danoInimigo=10,x,y, cooldownProjectil,vidaInicialInimigo;
     public Personagem personagem;
     public GameObject projectilInimigo,inimigo;
     public Vector2 posInicialProjectilInimigo;
@@ -46,19 +46,22 @@ public class Inimigo : MonoBehaviour
                 cooldownProjectil--;
 
             }
-            distanciaXPlayerInimigo = (int)inimigo.transform.position.x - (int)personagem.transform.position.x;
-            if (distanciaXPlayerInimigo < areaAtaqueInimigo && cooldownProjectil == 0 && Personagem.morri == false)
+            
+            if (Personagem.playerEmPerigo && Personagem.morri == false)
             {
-                animator.Play("ANIM_Enemy_2_Attack");
-                Instantiate(projectilInimigo, posInicialProjectilInimigo, Quaternion.identity);
-                cooldownProjectil = 20;
-
                 for (int s = 0; s < olhosInimigo.Length; s++)
                 {
                     olhosInimigo[s].color = corFlashOlhosInimigos;
                 }
+                if (cooldownProjectil == 0)
+                {
+                    animator.Play("ANIM_Enemy_2_Attack");
+                    Instantiate(projectilInimigo, posInicialProjectilInimigo, Quaternion.identity);
+                    cooldownProjectil = 20;
+                }
+                
             }
-            else if (distanciaXPlayerInimigo > areaAtaqueInimigo)
+            else  
             {
                 animator.Play("ANIM_Enemy_2_Idle");
                 for (int s = 0; s < olhosInimigo.Length; s++)

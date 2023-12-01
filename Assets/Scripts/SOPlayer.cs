@@ -7,7 +7,7 @@ using UnityEngine;
 public class SOPlayer : ScriptableObject
 {
     [Header("infos player")]
-    public int vidaInicial;
+    public int vidaInicial=10;
     public Vector3 posicaoRespawnPlayer;
 
     [Header("movimentacao")]

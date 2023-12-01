@@ -17,7 +17,7 @@ MonoBehaviour:
   velocidadeCaminhada: 10
   velocidadeCorrida: 15
   velocidadeAtual: 10
-  forcaPulo: 20
+  forcaPulo: 25
   friccao: {x: 1, y: 0}
   stretchY: 1.5
   stretchX: 0.7
