@@ -33,9 +33,10 @@ public class Personagem : MonoBehaviour
     public Projectil refDirecao;
 
     [Header("efeitos")]
-
     public ParticleSystem efeitopassos, efeitoPulo;
-    public 
+    public AudioSource sfxPassos;
+    public AudioClip[] listaSFX; 
+    private int IndexSFX;
 
 
 
@@ -91,6 +92,7 @@ public class Personagem : MonoBehaviour
             animator.Play("ANIM_Astronaut_Run");
             efeitopassos.Play();
             efeitoPulo.Stop();
+           
 
 
 
@@ -103,6 +105,7 @@ public class Personagem : MonoBehaviour
             animator.Play("ANIM_Astronaut_Run");
             efeitopassos.Play();
             efeitoPulo.Stop();
+            
 
 
 
@@ -172,6 +175,8 @@ public class Personagem : MonoBehaviour
             pulando = true;
             efeitopassos.Stop();
             efeitoPulo.Play();
+            sfxPassos.clip = listaSFX[3];
+            sfxPassos.Play();
             myRigidbody2D.velocity = Vector2.up * soplayer.forcaPulo;
 
             myRigidbody2D.transform.localScale = new Vector2(0.3f, 0.3f);
@@ -199,6 +204,13 @@ public class Personagem : MonoBehaviour
         }
 
 
+    }
+
+    public void TocarSFX()
+    {
+        IndexSFX = Random.Range(0,3);
+        sfxPassos.clip = listaSFX[IndexSFX];
+        sfxPassos.Play();
     }
 
     IEnumerator DelayRespawn()

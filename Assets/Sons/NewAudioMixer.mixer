@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8195141935712470130
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 84c04f1a1ee95bc44865852f517191b4
+  m_EffectName: Attenuation
+  m_MixLevel: 47afa54c7df1fd64586b6192f8265f64
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!241 &24100000
+AudioMixerController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NewAudioMixer
+  m_OutputGroup: {fileID: 0}
+  m_MasterGroup: {fileID: 24300002}
+  m_Snapshots:
+  - {fileID: 2013903881376024376}
+  - {fileID: 3180098507129613834}
+  m_StartSnapshot: {fileID: 2013903881376024376}
+  m_SuspendThreshold: -80
+  m_EnableSuspend: 1
+  m_UpdateMode: 0
+  m_ExposedParameters:
+  - guid: 86ca7533b2637744a844064d643563e5
+    name: SFX
+  - guid: 86968b251af83a0428f71df4696ba0a3
+    name: SA
+  m_AudioMixerGroupViews:
+  - guids:
+    - 76b4d31bc258f474dac27e5ada0b8955
+    - 77f5502ca09b47047bc69132c2495ad7
+    - a8b28d8ebea6ac74398b6c1a883b759d
+    name: View
+  m_CurrentViewIndex: 0
+  m_TargetSnapshot: {fileID: 3180098507129613834}
+--- !u!243 &24300002
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Master
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 76b4d31bc258f474dac27e5ada0b8955
+  m_Children:
+  - {fileID: 175776473597763479}
+  - {fileID: 3166174641423589041}
+  m_Volume: d6baca5dd5dc0784ca05504c9dd22a79
+  m_Pitch: b8fe7782f529e9743b8d5ad7f2c773bb
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 24400004}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &24400004
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 7f34c4fdf1be72749a4a1b054387866b
+  m_EffectName: Attenuation
+  m_MixLevel: 1e2ab7d169b65ee41a28449c9012ce93
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &175776473597763479
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: som ambiente
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 77f5502ca09b47047bc69132c2495ad7
+  m_Children: []
+  m_Volume: 86968b251af83a0428f71df4696ba0a3
+  m_Pitch: 8dfc0fc2c28351044916283eda8e1753
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 4615526200016599144}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!245 &2013903881376024376
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: som ligado
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: f4dc54e4e16da5249aee8321489fa34b
+  m_FloatValues:
+    86968b251af83a0428f71df4696ba0a3: -0.037667945
+    d6baca5dd5dc0784ca05504c9dd22a79: -0.083748296
+  m_TransitionOverrides: {}
+--- !u!243 &3166174641423589041
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a8b28d8ebea6ac74398b6c1a883b759d
+  m_Children: []
+  m_Volume: 86ca7533b2637744a844064d643563e5
+  m_Pitch: 610201380b879894da6b14e5cf7c398a
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8195141935712470130}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!245 &3180098507129613834
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: som desligado
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 693f0d2f6df8fbf41bcedf92a5dc75fe
+  m_FloatValues:
+    86ca7533b2637744a844064d643563e5: 0.18072015
+    86968b251af83a0428f71df4696ba0a3: 0.004331039
+    d6baca5dd5dc0784ca05504c9dd22a79: -80
+  m_TransitionOverrides: {}
+--- !u!244 &4615526200016599144
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 7aa5cf7668e1d9149b767a92228ecd2b
+  m_EffectName: Attenuation
+  m_MixLevel: a6f83ca776495ee408a7eaec4b787b60
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0

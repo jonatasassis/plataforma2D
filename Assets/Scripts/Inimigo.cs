@@ -15,7 +15,8 @@ public class Inimigo : MonoBehaviour
     public static int vidaAtualInimigo;
     public Animator animator;
     public bool inimigoMorto=false;
-     
+    public AudioSource sfxAtaque;
+
 
     private void Awake()
     {
@@ -52,11 +53,13 @@ public class Inimigo : MonoBehaviour
                 for (int s = 0; s < olhosInimigo.Length; s++)
                 {
                     olhosInimigo[s].color = corFlashOlhosInimigos;
+
                 }
                 if (cooldownProjectil == 0)
                 {
                     animator.Play("ANIM_Enemy_2_Attack");
                     Instantiate(projectilInimigo, posInicialProjectilInimigo, Quaternion.identity);
+                    sfxAtaque.Play();
                     cooldownProjectil = 20;
                 }
                 
